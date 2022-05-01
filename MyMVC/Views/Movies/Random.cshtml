@@ -1,0 +1,28 @@
+﻿@model MyMVC.ViewModels.RandomMovieViewModels
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    var className = Model.Customer.Count > 4 ? "popular" : null;
+}
+<h2 class="@className">@Model.Movie.Name</h2>  
+
+@if(Model.Customer.Count == 0)
+{
+    <p>No one has rented a movie.</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customer)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+@* --lalagyan lang ng @ sign para macompile as C# code
+   -- No need to rebuild pag html lang ang changes. Save will do     
+*@
